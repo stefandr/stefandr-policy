@@ -1,2 +1,2 @@
 # stefandr-policy
-buildin azure policy
+building azure policy

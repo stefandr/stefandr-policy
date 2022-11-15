@@ -1,0 +1,48 @@
+{
+  "policyType": "Custom",
+  "mode": "Indexed",
+  "displayName": "s1 - Audit public access disabled(ONLY) for Azure Database for MySQL servers",
+  "description": "Public access should be disabled for Azure Database for MySQL servers or firewall rule should be configured bla bla",
+  "policyRule": {
+    "if": {
+      "allOf": [
+        {
+          "field": "type",
+          "equals": "Microsoft.DBforMySQL/servers"
+        },
+        {
+          "field": "Microsoft.DBforMySQL/servers/publicNetworkAccess",
+          "notEquals": "Disabled"
+        }
+      ]
+    },
+    "then": {
+      "effect": "[parameters('effect')]"
+    }
+  },
+  "metadata": {
+    "category": "SQL",
+    "createdBy": "e46c6965-0d43-4230-9292-548812d438a3",
+    "createdOn": "2022-11-07T15:50:58.3699072Z",
+    "updatedBy": null,
+    "updatedOn": null
+  },
+  "parameters": {
+    "effect": {
+      "type": "String",
+      "allowedValues": [
+        "Audit",
+        "Deny",
+        "Disabled"
+      ],
+      "defaultValue": "Audit",
+      "metadata": {
+        "displayName": "Effect",
+        "description": "Enable or disable the execution of the policy"
+      }
+    }
+  },
+  "id": "/subscriptions/53b28e3d-a172-4955-b8e4-a50b1b570109/providers/Microsoft.Authorization/policyDefinitions/430b60d2-8309-4184-ab67-4651d074f507",
+  "name": "430b60d2-8309-4184-ab67-4651d074f507",
+  "type": "Microsoft.Authorization/policyDefinitions"
+}

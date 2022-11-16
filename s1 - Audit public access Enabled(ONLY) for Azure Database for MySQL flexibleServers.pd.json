@@ -2,7 +2,7 @@
   "policyType": "Custom",
   "mode": "Indexed",
   "displayName": "s1 - Audit public access Enabled(ONLY) for Azure Database for MySQL flexibleServers",
-  "description": "public access disabled or  firewall required Azure Database for MySQL flexibleServers",
+  "description": "public access disabled or  firewall required Azure Database for MySQL flexibleServers small modification",
   "policyRule": {
     "if": {
       "allOf": [

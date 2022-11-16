@@ -2,7 +2,7 @@
   "policyType": "Custom",
   "mode": "Indexed",
   "displayName": "s1 - Audit TLS seting for Azure Database for MySQL flexibleServers",
-  "description": "Audis SSL seting for Azure Database for MySQL flexibleServers",
+  "description": "Audis SSL seting for Azure Database for MySQL flexibleServers nieco sem pridaj",
   "policyRule": {
     "if": {
       "allOf": [

@@ -1,0 +1,32 @@
+name: manage-azure-policy-494782ca
+on:
+  workflow_dispatch:
+    inputs:
+      remarks:
+        description: 'Reason for triggering the workflow run'
+        required: false
+        default: 'Updating Azure Policies'
+
+
+## Uncomment the following if you wish to automatically trigger workflow run with every commit
+#
+#  push:
+#    paths:
+#      - 'policies/s1_v5_-_Public_network_access_should_be_disabled_for_PostgreSQL_flexible_servers_5c24f4d1-3c5d-422e-92cc-1c5e4b545dd7/**'
+#      - .github/workflows/manage-azure-policy-494782ca.yml
+jobs:
+  apply-azure-policy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS_494782ca}}
+        allow-no-subscriptions: true
+    - name: Create or Update Azure Policies
+      uses: azure/manage-azure-policy@v0
+      with:
+        paths: |
+          policies/s1_v5_-_Public_network_access_should_be_disabled_for_PostgreSQL_flexible_servers_5c24f4d1-3c5d-422e-92cc-1c5e4b545dd7/**

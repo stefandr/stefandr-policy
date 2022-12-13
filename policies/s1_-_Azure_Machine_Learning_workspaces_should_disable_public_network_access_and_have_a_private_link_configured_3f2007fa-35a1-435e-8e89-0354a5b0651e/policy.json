@@ -1,0 +1,68 @@
+{
+ "properties": {
+  "displayName": "s1 - Azure Machine Learning workspaces should disable public network access and have a private link configured",
+  "policyType": "Custom",
+  "mode": "Indexed",
+  "description": "Disabling public network access improves security by ensuring that the machine learning workspaces aren't exposed on the public internet. You can limit exposure of your workspaces by creating private endpoints instead. Learn more at: https://aka.ms/privateendpoints.",
+  "metadata": {
+   "category": "Machine Learning",
+   "createdBy": "e46c6965-0d43-4230-9292-548812d438a3",
+   "createdOn": "2022-12-08T09:23:41.1478276Z",
+   "updatedBy": "e46c6965-0d43-4230-9292-548812d438a3",
+   "updatedOn": "2022-12-08T15:40:08.5693499Z"
+  },
+  "parameters": {
+   "effect": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Effect",
+     "description": "Enable or disable the execution of the policy"
+    },
+    "allowedValues": [
+     "Audit",
+     "Deny",
+     "Disabled"
+    ],
+    "defaultValue": "Audit"
+   }
+  },
+  "policyRule": {
+   "if": {
+    "allOf": [
+     {
+      "field": "type",
+      "equals": "Microsoft.MachineLearningServices/workspaces"
+     },
+     {
+      "anyOf": [
+       {
+        "field": "Microsoft.MachineLearningServices/workspaces/publicNetworkAccess",
+        "exists": "false"
+       },
+       {
+        "field": "Microsoft.MachineLearningServices/workspaces/publicNetworkAccess",
+        "notEquals": "Disabled"
+       },
+       {
+        "count": {
+         "field": "Microsoft.MachineLearningServices/workspaces/privateEndpointConnections[*]",
+         "where": {
+          "field": "Microsoft.MachineLearningServices/workspaces/privateEndpointConnections[*].privateLinkServiceConnectionState.status",
+          "equals": "Approved"
+         }
+        },
+        "less": 1
+       }
+      ]
+     }
+    ]
+   },
+   "then": {
+    "effect": "[parameters('effect')]"
+   }
+  }
+ },
+ "id": "/subscriptions/53b28e3d-a172-4955-b8e4-a50b1b570109/providers/Microsoft.Authorization/policyDefinitions/3f2007fa-35a1-435e-8e89-0354a5b0651e",
+ "type": "Microsoft.Authorization/policyDefinitions",
+ "name": "3f2007fa-35a1-435e-8e89-0354a5b0651e"
+}

@@ -3,7 +3,7 @@
   "displayName": "s1 - Azure Machine Learning workspaces should disable public network access and have a private link configured",
   "policyType": "Custom",
   "mode": "Indexed",
-  "description": "Disabling public network access improves security by ensuring that the machine learning workspaces aren't exposed on the public internet. You can limit exposure of your workspaces by creating private endpoints instead. Learn more at: https://aka.ms/privateendpoints.",
+  "description": "Disabling public network access improves security by ensuring that the machine learning workspaces aren't exposed on the public internet. Private endpoint should be used. Learn more at: https://aka.ms/privateendpoints.",
   "metadata": {
    "category": "Machine Learning",
    "createdBy": "e46c6965-0d43-4230-9292-548812d438a3",

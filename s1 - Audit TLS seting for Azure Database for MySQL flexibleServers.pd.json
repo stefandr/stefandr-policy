@@ -1,8 +1,8 @@
 {
   "policyType": "Custom",
   "mode": "Indexed",
-  "displayName": "s1 - Audit public access Enabled(ONLY) for Azure Database for MySQL flexibleServers",
-  "description": "public access disabled or  firewall required Azure Database for MySQL flexibleServers small modification",
+  "displayName": "s1 - Audit TLS seting for Azure Database for MySQL flexibleServers",
+  "description": "Audis SSL seting for Azure Database for MySQL flexibleServers nieco sem pridaj",
   "policyRule": {
     "if": {
       "allOf": [
@@ -11,7 +11,7 @@
           "equals": "Microsoft.DBforMySQL/flexibleServers"
         },
         {
-          "field": "Microsoft.DBForMySql/flexibleServers/publicNetworkAccess",
+          "field": "Microsoft.DBForMySql/flexibleServers/sslEnforcement",
           "equals": "Enabled"
         }
       ]
@@ -23,9 +23,9 @@
   "metadata": {
     "category": "SQL",
     "createdBy": "e46c6965-0d43-4230-9292-548812d438a3",
-    "createdOn": "2022-11-07T16:15:31.1375818Z",
-    "updatedBy": null,
-    "updatedOn": null
+    "createdOn": "2022-10-25T11:37:38.1457969Z",
+    "updatedBy": "e46c6965-0d43-4230-9292-548812d438a3",
+    "updatedOn": "2022-11-08T21:15:19.8780577Z"
   },
   "parameters": {
     "effect": {
@@ -42,7 +42,7 @@
       }
     }
   },
-  "id": "/subscriptions/53b28e3d-a172-4955-b8e4-a50b1b570109/providers/Microsoft.Authorization/policyDefinitions/8d3b008f-c337-4fd8-be99-48e42e43950a",
-  "name": "8d3b008f-c337-4fd8-be99-48e42e43950a",
+  "id": "/subscriptions/53b28e3d-a172-4955-b8e4-a50b1b570109/providers/Microsoft.Authorization/policyDefinitions/5aa6f63e-07de-4408-aaba-9f9f5586650b",
+  "name": "5aa6f63e-07de-4408-aaba-9f9f5586650b",
   "type": "Microsoft.Authorization/policyDefinitions"
 }

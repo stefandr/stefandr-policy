@@ -1,0 +1,32 @@
+name: manage-azure-policy-10527ea7
+on:
+  workflow_dispatch:
+    inputs:
+      remarks:
+        description: 'Reason for triggering the workflow run'
+        required: false
+        default: 'Updating Azure Policies'
+
+
+## Uncomment the following if you wish to automatically trigger workflow run with every commit
+#
+#  push:
+#    paths:
+#      - 's1 v8 Configure backup for file share on storage accounts with a given tag to an existing backup vault in the same region/policies/s1_v8_Configure_backup_for_file_share_on_storage_accounts_with_a_given_tag_to_an_existing_backup_vault_in_the_same_region_34139dba-b122-410d-a1a9-30f9bfc83893/**'
+#      - .github/workflows/manage-azure-policy-10527ea7.yml
+jobs:
+  apply-azure-policy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS_10527ea7}}
+        allow-no-subscriptions: true
+    - name: Create or Update Azure Policies
+      uses: azure/manage-azure-policy@v0
+      with:
+        paths: |
+          s1 v8 Configure backup for file share on storage accounts with a given tag to an existing backup vault in the same region/policies/s1_v8_Configure_backup_for_file_share_on_storage_accounts_with_a_given_tag_to_an_existing_backup_vault_in_the_same_region_34139dba-b122-410d-a1a9-30f9bfc83893/**
